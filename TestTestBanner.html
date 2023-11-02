@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
+            html,
+            body {
+                margin: 0;
+            }
+
+            .banner {
+                background: #00739a;
+                display: none; /* Hide the banner by default */
+                text-align: center;
+            }
+
+            .banner__content {
+                padding: 16px;
+                max-width: 500px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+            }
+
+            .banner__text {
+                flex-grow: 1;
+                line-height: 1.4;
+                font-family: 'sans-serif';
+                color: #ffffff;
+                font-weight: bold;
+            }
+
+            .banner__close {
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: #ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="banner" id="IEBanner">
+            <div class="banner__content">
+                <div class="banner__text">
+                    <strong>WARNUNG:</strong> Bitte kein Internet Explorer verwenden.
+                </div>
+                <button class="banner__close" type="button" id="closeBanner">
+                    <span class="material-icons">
+                        close
+                    </span>
+                </button>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var userAgent = window.navigator.userAgent;
+
+                if (userAgent.indexOf("MSIE") !== -1 || userAgent.indexOf("Trident/") !== -1) {
+                    // Internet Explorer detected
+                    document.getElementById("IEBanner").style.display = "block";
+                }
+            });
+
+            document.getElementById("closeBanner").addEventListener("click", function () {
+                document.getElementById("IEBanner").style.display = "none";
+            });
+        </script>
+    </body>
+</html>
